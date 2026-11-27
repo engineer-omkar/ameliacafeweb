@@ -1,0 +1,2183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amelia Bites — A Bite of Romance. A Taste of Luxury.</title>
+
+  <!-- Google Fonts: Playfair Display, Piazzolla, Roboto, Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Piazzolla:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Poppins:wght@400;500;600&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root {
+      --gold: #B98F37;
+      --gold-dark: #9E782B;
+      --brown-dark: #4A3F35;
+      --text-main: #1F1A17;
+      --text-muted: #6E655F;
+      --bg-cream: #FAF8F5;
+      --bg-beige: #F5EFE6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      color: var(--text-main);
+      background-color: #FFFFFF;
+      overflow-x: hidden;
+    }
+
+    .font-serif-title {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .font-piazzolla {
+      font-family: 'Piazzolla', serif;
+    }
+
+    .font-roboto {
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .font-poppins {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Hide scrollbars cleanly where needed */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Exact Figma Nav Link Typography (Roboto 400 Regular 16px, line-height 100%) */
+    .nav-link {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 16px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      position: relative;
+      padding: 8px 2px;
+      transition: color 0.25s ease;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+    }
+
+    /* Animated Sliding & Hover Underline below Nav Items */
+    .nav-underline-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background-color: #B98F37;
+      border-radius: 999px;
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), width 0.32s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    /* Exact Figma Hero Title Box (700 x 178, Roboto SemiBold 600, 76px, 100% line-height) */
+    .hero-title-box {
+      width: 100%;
+      max-width: 700px;
+      height: 178px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-title {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 600;
+      font-style: normal;
+      font-size: 76px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      margin: 0;
+      background: linear-gradient(93.44deg, #B98F37 5.6%, #B98F37 48.52%, #363636 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title-box {
+        height: auto;
+        min-height: auto;
+      }
+      .hero-title {
+        font-size: 40px;
+        line-height: 112%;
+      }
+    }
+
+    /* Exact Figma Trending Category Products Heading (Piazzolla 400 Regular 48px) */
+    .trending-heading {
+      font-family: 'Piazzolla', serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 48px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: center;
+      color: #2C221E;
+    }
+
+    @media (max-width: 768px) {
+      .trending-heading {
+        font-size: 32px;
+        line-height: 115%;
+      }
+    }
+
+    /* Hero Full-Section Background (Replace hero.png in your folder or edit URL below) */
+    .hero-section {
+      min-height: 680px;
+      background-color: #FFFFFF;
+      background-image:
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.65) 45%, rgba(255, 255, 255, 0.1) 100%),
+        url('hero.png'),
+        url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        min-height: 520px;
+        background-position: center center;
+      }
+    }
+
+    /* Product Grid: 4 Columns Desktop (300px cards), Strictly 2 Columns Mobile */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 300px);
+      justify-content: center;
+      gap: 24px;
+      max-width: 1272px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1290px) {
+      .products-grid {
+        grid-template-columns: repeat(3, 300px);
+      }
+    }
+
+    @media (max-width: 960px) {
+      .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        padding: 0 12px;
+      }
+    }
+
+    /* Exact Figma Product Card: 300px x 422px divided visually into 3 parts by 2px white space line */
+    .product-card {
+      width: 300px;
+      height: 422px;
+      border-radius: 16px;
+      background: #FFFFFF;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      overflow: hidden;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px -10px rgba(74, 63, 53, 0.14);
+    }
+
+    .card-part-1 {
+      background-color: #FAF7F8;
+      height: 204px;
+      position: relative;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .card-part-2 {
+      background-color: #FAF7F8;
+      flex: 1;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .card-part-3 {
+      background-color: #FAF7F8;
+      padding: 12px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* Exact Figma Food Title inside Card */
+    .product-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 500;
+      font-style: normal;
+      font-size: 16px;
+      line-height: 120%;
+      letter-spacing: 0%;
+      color: #1F1A17;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    /* Exact Figma BUY NOW Button: 170 x 39, border-radius 8px, padding 10px 48px */
+    .buy-now-btn {
+      width: 170px;
+      height: 39px;
+      border-radius: 8px;
+      border: 1px solid #B98F37;
+      padding: 10px 48px;
+      gap: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: #B98F37;
+      background-color: #FFFFFF;
+      transition: all 0.22s ease;
+      cursor: pointer;
+    }
+
+    .buy-now-btn:hover {
+      background-color: #B98F37;
+      color: #FFFFFF;
+    }
+
+    /* Inline Quantity Stepper (- 1 +) matching BUY NOW dimensions */
+    .qty-stepper-btn {
+      width: 170px;
+      height: 39px;
+      border-radius: 8px;
+      border: 1px solid #B98F37;
+      background-color: #B98F37;
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 14px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .qty-stepper-btn button {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.18s ease;
+    }
+
+    .qty-stepper-btn button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Mobile 2-per-row Card Adjustments */
+    @media (max-width: 960px) {
+      .product-card {
+        width: 100%;
+        height: auto;
+        min-height: 340px;
+      }
+
+      /* Horizontal swipeable Special Offers cards matching exact 2-per-row food card width */
+      #specialOffersTrack {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 14px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      #specialOffersTrack .product-card {
+        width: calc(50% - 7px);
+        min-width: calc(50% - 7px);
+        flex: 0 0 calc(50% - 7px);
+        scroll-snap-align: start;
+      }
+
+      .card-part-1 {
+        height: 150px;
+      }
+
+      .product-title {
+        font-size: 14px;
+      }
+
+      .buy-now-btn,
+      .qty-stepper-btn {
+        width: 100%;
+        max-width: 160px;
+        height: 36px;
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+    }
+
+    /* Smooth Scroll Reveal Animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal-on-scroll.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile Slide-Over Navigation Drawer */
+    .mobile-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background-color: rgba(31, 26, 23, 0.45);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+
+    .mobile-drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-drawer-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 70;
+      width: min(86vw, 340px);
+      background-color: #FAF8F5;
+      border-left: 1px solid #EAE4D9;
+      box-shadow: -16px 0 40px rgba(31, 26, 23, 0.14);
+      transform: translateX(100%);
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+
+    .mobile-drawer-panel.open {
+      transform: translateX(0);
+    }
+
+    /* Hero Entrance & Subtle Ambient Glow */
+    @keyframes heroFadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(22px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .hero-animate-in {
+      animation: heroFadeUp 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .hero-cta-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-cta-shimmer::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -120%;
+      width: 70%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+      transform: skewX(-22deg);
+      transition: left 0.65s ease;
+    }
+
+    .hero-cta-shimmer:hover::after {
+      left: 140%;
+    }
+
+    /* Interactive Card Tilt & Cart Badge Pop */
+    .product-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    @keyframes cartPop {
+      0% { transform: scale(1); }
+      40% { transform: scale(1.35); }
+      75% { transform: scale(0.92); }
+      100% { transform: scale(1); }
+    }
+
+    .cart-pop {
+      animation: cartPop 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Flying Food Bubble Animation to Cart */
+    .flying-cart-dot {
+      position: fixed;
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 2px solid #B98F37;
+      box-shadow: 0 8px 20px rgba(185, 143, 55, 0.45);
+      z-index: 95;
+      pointer-events: none;
+      transition: transform 0.68s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.68s ease;
+    }
+
+    /* Floating Bottom Cart Pill when items are in Cart */
+    .floating-cart-pill {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120%);
+      z-index: 45;
+      transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .floating-cart-pill.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Animated Horizontal Scroll Hint on Mobile Special Offers */
+    @keyframes swipeHintSlide {
+      0%, 100% {
+        transform: translateX(0);
+      }
+      50% {
+        transform: translateX(6px);
+      }
+    }
+
+    .swipe-hint-arrow {
+      display: inline-block;
+      animation: swipeHintSlide 1.4s ease-in-out infinite;
+    }
+
+    /* Staggered Card Entrance Animation */
+    @keyframes cardStaggerIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .card-stagger {
+      opacity: 0;
+      animation: cardStaggerIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Gentle Organic Float for Founder Portrait & Gift Showcase */
+    @keyframes gentleFloat {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-7px);
+      }
+    }
+
+    .float-slow {
+      animation: gentleFloat 4.8s ease-in-out infinite;
+    }
+
+    /* Subtle Gold Pulse Glow on Countdown Timer Boxes */
+    @keyframes timerPulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(185, 143, 55, 0);
+      }
+      50% {
+        box-shadow: 0 4px 14px -2px rgba(185, 143, 55, 0.22);
+      }
+    }
+
+    .timer-box-glow {
+      animation: timerPulse 3s ease-in-out infinite;
+    }
+
+    /* Trust Badge Icon Lift on Hover */
+    .trust-badge-item {
+      transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .trust-badge-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .trust-badge-item svg {
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), color 0.25s ease;
+    }
+
+    .trust-badge-item:hover svg {
+      transform: scale(1.12);
+      color: #B98F37;
+    }
+  </style>
+</head>
+<body class="bg-white text-[#1F1A17]">
+
+  <!-- ==================== STICKY HEADER / NAVBAR ==================== -->
+  <header class="sticky top-0 z-50 bg-[#FAF8F5]/95 backdrop-blur-md border-b border-[#EFEAE1]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
+
+      <!-- Left: Brand Logo PNG (Place logo.png next to index.html; falls back cleanly if missing) -->
+      <button onclick="switchView('home')" class="flex items-center gap-2.5 shrink-0 focus:outline-none">
+        <img
+          src="logo.png"
+          alt="Amelia Bites Logo"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          class="h-11 sm:h-12 w-auto object-contain"
+        />
+        <div class="hidden items-center gap-2.5">
+          <div class="w-10 h-10 rounded-full bg-[#B98F37] text-white flex items-center justify-center font-serif-title font-bold text-lg shadow-2xs">
+            AB
+          </div>
+          <div class="text-left">
+            <span class="block font-serif-title text-lg sm:text-xl font-bold text-[#1F1A17] leading-none">Amelia Bites</span>
+            <span class="block font-roboto text-[10px] tracking-widest uppercase text-[#B98F37] mt-0.5">A Bite of Romance</span>
+          </div>
+        </div>
+      </button>
+
+      <!-- Center: Navigation Links (Roboto 400 Regular 16px with Animated Sliding & Hover Line) -->
+      <nav id="desktopNav" onmouseleave="resetNavIndicator()" class="relative hidden md:flex items-center gap-8 text-[#1F1A17]">
+        <button onclick="goToSection('home')" onmouseenter="moveNavIndicator(this)" data-section="home" id="nav-home" class="nav-link text-[#B98F37]">Home</button>
+        <button onclick="goToSection('story')" onmouseenter="moveNavIndicator(this)" data-section="story" id="nav-story" class="nav-link hover:text-[#B98F37]">About us</button>
+        <button onclick="switchView('explore')" onmouseenter="moveNavIndicator(this)" data-section="explore" id="nav-explore" class="nav-link hover:text-[#B98F37]">Explore</button>
+        <button onclick="goToSection('celebrate')" onmouseenter="moveNavIndicator(this)" data-section="celebrate" id="nav-celebrate" class="nav-link hover:text-[#B98F37]">Luxury Gifts</button>
+        <button onclick="goToSection('contact')" onmouseenter="moveNavIndicator(this)" data-section="contact" id="nav-contact" class="nav-link hover:text-[#B98F37]">Contact us</button>
+        <span id="navUnderlineBar" class="nav-underline-bar"></span>
+      </nav>
+
+      <!-- Right: Rounded Search Pill + Cart Icon + Mobile Menu Toggle -->
+      <div class="flex items-center gap-3">
+        <!-- Search Input -->
+        <div class="hidden sm:flex items-center bg-white border border-[#E6DFD3] rounded-full px-3.5 py-1.5 w-48 lg:w-60 focus-within:border-[#B98F37] transition-colors">
+          <svg class="w-4 h-4 text-[#8D8279] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z" />
+          </svg>
+          <input
+            id="navSearchInput"
+            type="text"
+            oninput="handleSearch(this.value)"
+            placeholder="Search menu..."
+            class="bg-transparent border-none outline-none text-xs sm:text-sm text-[#1F1A17] pl-2 w-full placeholder-[#9A908A]"
+          />
+        </div>
+
+        <!-- Cart Button -->
+        <button id="headerCartBtn" onclick="switchView('cart')" aria-label="Shopping Cart" class="relative p-2.5 rounded-full bg-white border border-[#E6DFD3] hover:border-[#B98F37] text-[#1F1A17] hover:text-[#B98F37] transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span id="cartBadge" class="hidden absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[#B98F37] text-white text-[10px] font-bold flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobileMenuBtn" onclick="toggleMobileMenu(true)" aria-label="Open Menu" aria-expanded="false" class="md:hidden p-2.5 rounded-full bg-white border border-[#E6DFD3] hover:border-[#B98F37] text-[#1F1A17] active:scale-95 transition-all">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h12M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Slide-Over Navigation Drawer -->
+  <div id="mobileDrawerBackdrop" onclick="toggleMobileMenu(false)" class="mobile-drawer-backdrop md:hidden"></div>
+  <aside id="mobileDrawerPanel" aria-label="Mobile Navigation" class="mobile-drawer-panel md:hidden">
+    <div class="p-5 space-y-6">
+      <!-- Drawer Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-[#EAE4D9]">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-full bg-[#B98F37] text-white flex items-center justify-center font-serif-title font-bold text-base">
+            AB
+          </div>
+          <div>
+            <span class="block font-serif-title text-base font-bold text-[#1F1A17] leading-none">Amelia Bites</span>
+            <span class="block font-roboto text-[9px] tracking-widest uppercase text-[#B98F37] mt-0.5">Talegaon Cafe</span>
+          </div>
+        </div>
+        <button onclick="toggleMobileMenu(false)" aria-label="Close Menu" class="w-9 h-9 rounded-full bg-white border border-[#E6DFD3] text-[#4A3F35] flex items-center justify-center active:scale-95">
+          ✕
+        </button>
+      </div>
+
+      <!-- Search Input inside Drawer -->
+      <div class="flex items-center bg-white border border-[#E2DDD3] focus-within:border-[#B98F37] rounded-xl px-3.5 py-2.5 shadow-2xs">
+        <svg class="w-4 h-4 text-[#B98F37] shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z" />
+        </svg>
+        <input
+          id="mobileSearchInput"
+          type="text"
+          oninput="handleSearch(this.value)"
+          placeholder="Search momos, shakes, gifts..."
+          class="bg-transparent border-none outline-none text-sm text-[#1F1A17] pl-2.5 w-full placeholder-[#9A908A]"
+        />
+      </div>
+
+      <!-- Primary Navigation Links -->
+      <div class="space-y-1">
+        <p class="px-3 text-[10px] font-bold uppercase tracking-widest text-[#9A908A] mb-2">Navigation</p>
+        <button onclick="goToSection('home'); toggleMobileMenu(false);" data-mobile-nav="home" class="mobile-nav-item w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium bg-[#F5EFE6] text-[#B98F37] transition-colors">
+          <span>Home</span>
+        </button>
+        <button onclick="switchView('explore'); toggleMobileMenu(false);" data-mobile-nav="explore" class="mobile-nav-item w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium text-[#1F1A17] hover:bg-[#F5EFE6] transition-colors">
+          <span>Explore Full Menu</span>
+        </button>
+        <button onclick="goToSection('story'); toggleMobileMenu(false);" data-mobile-nav="story" class="mobile-nav-item w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium text-[#1F1A17] hover:bg-[#F5EFE6] transition-colors">
+          <span>About Us</span>
+        </button>
+        <button onclick="goToSection('celebrate'); toggleMobileMenu(false);" data-mobile-nav="celebrate" class="mobile-nav-item w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium text-[#1F1A17] hover:bg-[#F5EFE6] transition-colors">
+          <span>Luxury Gifts</span>
+        </button>
+        <button onclick="goToSection('contact'); toggleMobileMenu(false);" data-mobile-nav="contact" class="mobile-nav-item w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-sm font-medium text-[#1F1A17] hover:bg-[#F5EFE6] transition-colors">
+          <span>Contact Us</span>
+        </button>
+      </div>
+
+      <!-- Quick Category Shortcuts -->
+      <div>
+        <p class="px-3 text-[10px] font-bold uppercase tracking-widest text-[#9A908A] mb-2.5">Popular Categories</p>
+        <div class="grid grid-cols-2 gap-2">
+          <button onclick="activeCategory='Momos'; switchView('explore'); toggleMobileMenu(false);" class="px-3.5 py-2.5 rounded-xl bg-white border border-[#EAE4D9] text-left text-xs font-medium text-[#1F1A17] hover:border-[#B98F37] transition-colors">
+            Steamed Momos
+          </button>
+          <button onclick="activeCategory='Coffee & Shakes'; switchView('explore'); toggleMobileMenu(false);" class="px-3.5 py-2.5 rounded-xl bg-white border border-[#EAE4D9] text-left text-xs font-medium text-[#1F1A17] hover:border-[#B98F37] transition-colors">
+            Cold Coffee &amp; Shakes
+          </button>
+          <button onclick="activeCategory='Snacks & Burgers'; switchView('explore'); toggleMobileMenu(false);" class="px-3.5 py-2.5 rounded-xl bg-white border border-[#EAE4D9] text-left text-xs font-medium text-[#1F1A17] hover:border-[#B98F37] transition-colors">
+            Burgers &amp; Pasta
+          </button>
+          <button onclick="activeCategory='Chocolates & Gifts'; switchView('explore'); toggleMobileMenu(false);" class="px-3.5 py-2.5 rounded-xl bg-white border border-[#EAE4D9] text-left text-xs font-medium text-[#1F1A17] hover:border-[#B98F37] transition-colors">
+            Dubai Chocolates
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="p-5 bg-white border-t border-[#EAE4D9] space-y-2.5">
+      <button onclick="switchView('cart'); toggleMobileMenu(false);" class="w-full py-3 rounded-xl bg-[#B98F37] text-white text-xs font-semibold flex items-center justify-center gap-2 shadow-2xs">
+        <span>View Shopping Cart</span>
+        <span id="mobileDrawerCartCount" class="px-2 py-0.5 rounded-full bg-white/20 text-[11px]">0</span>
+      </button>
+      <a href="https://www.zomato.com/pune/amelia-cafe-talegaon" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-[#E23744] text-white text-xs font-medium flex items-center justify-center gap-1.5">
+        <span>Direct Order on Zomato</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- ==================== VIEW 1: HOME STOREFRONT ==================== -->
+  <div id="view-home" class="page-view">
+
+    <!-- 1. HERO SECTION (Full-section background with 700x178 Roboto SemiBold 76px Hero Title) -->
+    <section id="home" class="hero-section relative w-full flex flex-col items-center justify-start pt-14 sm:pt-20 px-4 text-center">
+      <div id="heroContentParallax" class="max-w-5xl mx-auto z-10 hero-animate-in">
+        <div class="hero-title-box">
+          <h1 class="hero-title">
+            “A Bite of Romance.<br />
+            A Taste of Luxury.”
+          </h1>
+        </div>
+
+        <div class="mt-6 flex items-center justify-center">
+          <button
+            onclick="goToSection('trending')"
+            class="hero-cta-shimmer bg-[#B98F37] hover:bg-[#9E782B] text-white uppercase transition-all shadow-xs active:scale-95 inline-flex items-center justify-center whitespace-nowrap"
+            style="min-width: 172px; height: 48px; gap: 10px; border-radius: 16px; padding: 10px 24px; background: #B98F37; font-family: 'Roboto', sans-serif; font-weight: 400; font-style: normal; font-size: 24px; line-height: 100%; letter-spacing: 0%;">
+            SHOP NOW
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. TRENDING CATEGORY PRODUCTS (Piazzolla 400 Regular 48px) -->
+    <section id="trending" class="py-16 sm:py-20 bg-white reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 text-center mb-12">
+        <h2 class="trending-heading uppercase">
+          TRENDING<br />CATEGORY PRODUCTS
+        </h2>
+      </div>
+
+      <!-- 4-Col Desktop (300x422px) / 2-Col Mobile Grid -->
+      <div id="trendingGrid" class="products-grid"></div>
+
+      <div class="text-center mt-10">
+        <button
+          onclick="switchView('explore')"
+          class="inline-flex items-center gap-2 px-7 py-3 rounded-xl border border-[#B98F37] text-[#B98F37] hover:bg-[#B98F37] hover:text-white font-roboto text-sm font-medium transition-colors">
+          <span>View All Cafe Menu Items</span>
+          <span>→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 3. SPECIAL OFFERS BAND WITH LIVE COUNTDOWN TIMER -->
+    <section class="py-12 sm:py-14 bg-[#F5FFF8] reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 flex flex-col lg:flex-row items-start lg:items-center gap-8">
+
+        <!-- Left Brand, Live Offer Timer & Controls Column -->
+        <div class="w-full lg:w-64 shrink-0 flex flex-col items-start justify-center gap-4">
+          <div class="space-y-2.5">
+            <div class="inline-block bg-white px-3.5 py-2 rounded-xl border border-[#EAE5DC]">
+              <span class="font-serif-title font-bold text-[#B98F37] text-base">Amelia Bites</span>
+            </div>
+            <h3 class="font-piazzolla text-2xl sm:text-[28px] font-medium text-[#1F1A17]">
+              Special Offers
+            </h3>
+            <p class="font-roboto text-xs text-[#6E655F]">Limited-time cafe combos ending soon</p>
+          </div>
+
+          <!-- Live Countdown Timer Boxes (5-Hour Auto-Resetting Cycle) -->
+          <div class="flex items-center gap-2" aria-label="Special Offer Countdown Timer">
+            <div class="timer-box-glow bg-white border border-[#E2DDD3] rounded-lg px-2.5 py-1.5 text-center min-w-[48px]">
+              <span id="offerHours" class="block font-roboto text-base font-bold text-[#B98F37] leading-none">05</span>
+              <span class="block font-roboto text-[10px] uppercase text-[#6E655F] mt-1">Hrs</span>
+            </div>
+            <span class="font-bold text-[#B98F37]">:</span>
+            <div class="timer-box-glow bg-white border border-[#E2DDD3] rounded-lg px-2.5 py-1.5 text-center min-w-[48px]">
+              <span id="offerMinutes" class="block font-roboto text-base font-bold text-[#B98F37] leading-none">00</span>
+              <span class="block font-roboto text-[10px] uppercase text-[#6E655F] mt-1">Min</span>
+            </div>
+            <span class="font-bold text-[#B98F37]">:</span>
+            <div class="timer-box-glow bg-white border border-[#E2DDD3] rounded-lg px-2.5 py-1.5 text-center min-w-[48px]">
+              <span id="offerSeconds" class="block font-roboto text-base font-bold text-[#B98F37] leading-none">00</span>
+              <span class="block font-roboto text-[10px] uppercase text-[#6E655F] mt-1">Sec</span>
+            </div>
+          </div>
+
+          <!-- Mobile Animated Horizontal Scroll Hint -->
+          <div id="mobileOfferSwipeHint" onclick="scrollOffers(180)" class="lg:hidden inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-[#E2DDD3] text-xs font-medium text-[#B98F37] shadow-2xs cursor-pointer select-none">
+            <span>Swipe for more offers</span>
+            <span class="swipe-hint-arrow">→</span>
+          </div>
+
+          <!-- Circular < > Navigation Arrows (Desktop Carousel) -->
+          <div class="hidden lg:flex items-center gap-3 pt-1">
+            <button
+              onclick="scrollOffers(-310)"
+              aria-label="Previous offer"
+              class="w-9 h-9 rounded-full bg-white border border-[#E2DDD3] hover:border-[#B98F37] text-[#1F1A17] hover:text-[#B98F37] flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button
+              onclick="scrollOffers(310)"
+              aria-label="Next offer"
+              class="w-9 h-9 rounded-full bg-white border border-[#E2DDD3] hover:border-[#B98F37] text-[#1F1A17] hover:text-[#B98F37] flex items-center justify-center transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right Horizontal Scrollable Row of Offer Cards -->
+        <div id="specialOffersTrack" class="w-full flex items-stretch gap-5 overflow-x-auto no-scrollbar pb-2"></div>
+      </div>
+    </section>
+
+    <!-- 4. THE STORY BEHIND OUR SWEETS -->
+    <section id="story" class="py-16 sm:py-24 bg-white reveal-on-scroll">
+      <div class="text-center px-4 mb-14 sm:mb-16">
+        <h2 class="trending-heading">
+          The Story Behind Our Sweets
+        </h2>
+      </div>
+
+      <!-- Compact Horizontal Beige Plate with Overlapping Founder Portrait -->
+      <div class="w-full bg-[#F5EFE6] py-6 sm:py-7 px-4 sm:px-8">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-12">
+          <!-- Organic Gold Blob Portrait extending taller than the horizontal beige plate -->
+          <div class="float-slow relative w-52 h-52 sm:w-64 sm:h-64 shrink-0 -my-12 sm:-my-16 flex items-center justify-center z-10">
+            <div class="w-full h-full bg-[#B98F37]/85 overflow-hidden shadow-md" style="border-radius: 56% 44% 62% 38% / 46% 58% 42% 54%;">
+              <img
+                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+                alt="Founder of Amelia Bites"
+                onerror="handleImgFallback(this, 'Amelia Founder')"
+                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+              />
+            </div>
+          </div>
+
+          <!-- Story Paragraph centered inside the compact horizontal plate -->
+          <div class="font-roboto text-sm sm:text-base text-[#4A3F35] leading-relaxed text-center md:text-left pt-6 md:pt-0">
+            <p>
+              Innovation starts with us! My name is Miss. Madhuri Nilesh Bhosale. 
+Handcrafted chocolates and traditional laddus, made fresh at home using quality ingredients.
+Each batch is prepared with care, maintaining hygiene, taste, and consistency.
+From everyday indulgences to festive moments, our sweets are made to feel special.
+Ideal for personal treats, gifting, and bulk or business orders. Sweeten yourself with a chocolate
+it will brighten your day.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CELEBRATE WITH US (Roboto 400 Regular 16px Centered + Rectangle 189 & Notched Subtract Cards) -->
+    <section id="celebrate" class="py-16 sm:py-20 bg-white reveal-on-scroll">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="font-serif-title text-3xl sm:text-4xl font-semibold text-[#1F1A17] mb-4">
+          Celebrate With Us
+        </h2>
+        <p class="font-roboto font-normal text-[16px] leading-[150%] tracking-normal text-center text-[#6E655F] max-w-2xl mx-auto mb-6">
+          Make every milestone unforgettable with curated luxury chocolate boxes, festive dry-fruit hampers, and custom cafe celebration platters tailored for weddings, birthdays, and corporate gifting.
+        </p>
+
+        <button
+          onclick="switchView('explore')"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[#B98F37] text-[#B98F37] hover:bg-[#B98F37] hover:text-white font-roboto text-sm font-medium transition-colors mb-12">
+          <span>🎁</span>
+          <span>Explore Gift Hampers</span>
+        </button>
+      </div>
+
+      <!-- Dual Asymmetric Gift Hamper Showcase (Replace celebrate-1.png & celebrate-2.png in your folder) -->
+      <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-6 sm:gap-8">
+        <!-- Left Smaller Rounded Card (celebrate-1.png) -->
+        <div class="w-full md:w-[340px] h-[250px] sm:h-[280px] rounded-[28px] bg-[#EFECE8] overflow-hidden shadow-xs">
+          <img
+            src="celebrate-1.png"
+            alt="Amelia Bites Luxury Gift Box"
+            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=700&q=80';"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+
+        <!-- Right Larger Notched Card (celebrate-2.png) -->
+        <div class="relative w-full md:w-[560px] h-[300px] sm:h-[360px] rounded-[32px] bg-[#EFECE8] overflow-hidden shadow-xs">
+          <div class="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 w-7 h-36 bg-white rounded-r-2xl z-10"></div>
+          <img
+            src="celebrate-2.png"
+            alt="Amelia Bites Signature Collection"
+            onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1606312619070-d48b4c652a52?auto=format&fit=crop&w=1000&q=80';"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. GET IN TOUCH -->
+    <section id="contact" class="py-16 bg-[#F5EFE6] reveal-on-scroll">
+      <div class="max-w-5xl mx-auto px-4 text-center">
+        <h2 class="font-serif-title text-3xl sm:text-4xl font-semibold text-[#1F1A17] mb-2">
+          Get In Touch
+        </h2>
+        <p class="font-roboto text-xs sm:text-sm text-[#6E655F] mb-10">
+          Have a custom hamper request or bulk cafe order? Reach out to our team anytime.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <!-- Talk to Sales Card -->
+          <div class="bg-white rounded-2xl p-8 shadow-2xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md">
+            <div class="w-10 h-10 rounded-full bg-[#FAF8F5] text-[#4A3F35] flex items-center justify-center mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </div>
+            <h3 class="font-roboto text-base font-semibold text-[#1F1A17] mb-2">Talk to Sales</h3>
+            <p class="font-roboto text-xs text-[#6E655F] leading-relaxed mb-4 max-w-xs">
+              Interested in custom celebration boxes or bulk party orders? Give our Talegaon cafe desk a call.
+            </p>
+            <a href="tel:+91 8446989843" class="font-roboto text-sm font-medium text-[#B98F37] hover:underline">
+              +91 8446989843
+            </a>
+          </div>
+
+          <!-- Chat With Us Card -->
+          <div class="bg-white rounded-2xl p-8 shadow-2xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1.5 hover:shadow-md">
+            <div class="w-10 h-10 rounded-full bg-[#FAF8F5] text-[#4A3F35] flex items-center justify-center mb-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+              </svg>
+            </div>
+            <h3 class="font-roboto text-base font-semibold text-[#1F1A17] mb-2">Order &amp; Support</h3>
+            <p class="font-roboto text-xs text-[#6E655F] leading-relaxed mb-4 max-w-xs">
+              Visit us at Indrayni Colony, Kadolkar Colony, Talegaon Dabhade or email us for custom gifting inquiries.
+            </p>
+            <a href="mailto:amelliabites@gmail.com" class="font-roboto text-sm font-medium text-[#B98F37] hover:underline">
+              amelliabites@gmail.com
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. TESTIMONIALS & 4 TRUST BADGES -->
+    <section class="py-16 bg-white reveal-on-scroll">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="font-serif-title text-3xl sm:text-4xl font-semibold text-[#1F1A17] mb-3">
+          Testimonials
+        </h2>
+
+        <!-- Review Quote & 5-Star SVG Accent (Replace review.svg in your folder if desired) -->
+        <div class="flex items-center justify-center mb-5">
+          <img
+            src="review.svg"
+            alt="5 Star Customer Rating"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';"
+            class="h-7 w-auto object-contain"
+          />
+          <div class="hidden items-center gap-1.5 text-[#B98F37]" aria-label="5 out of 5 stars">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+
+        <p id="testimonialQuote" class="font-roboto text-xs sm:text-sm text-[#6E655F] leading-relaxed min-h-[60px] transition-opacity duration-300">
+          "Best steamed momos and thick cold coffee in Talegaon Dabhade! Their Dubai pistachio chocolate bar and gift hampers are also unmatched in taste and packaging."
+        </p>
+        <p id="testimonialAuthor" class="font-roboto text-xs font-bold text-[#1F1A17] mt-4">
+          Tanmay Surse
+        </p>
+
+        <!-- Carousel Dots -->
+        <div id="testimonialDots" class="flex items-center justify-center gap-2 mt-4"></div>
+      </div>
+
+      <!-- 4 Trust Badges Row -->
+      <div class="max-w-5xl mx-auto px-4 mt-14 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
+        <div class="trust-badge-item flex flex-col items-center gap-2.5">
+          <svg class="w-9 h-9 text-[#4A3F35]" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+          </svg>
+          <span class="font-roboto text-xs font-medium text-[#1F1A17]">Fast Zomato Delivery</span>
+        </div>
+
+        <div class="trust-badge-item flex flex-col items-center gap-2.5">
+          <svg class="w-9 h-9 text-[#4A3F35]" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0-18l-3 3m3-3l3 3m-3 15l-3-3m3 3l3-3M3 12h18M3 12l3-3m-3 3l3 3m15-3l-3-3m3 3l-3 3" />
+          </svg>
+          <span class="font-roboto text-xs font-medium text-[#1F1A17]">Chilled &amp; Fresh Shakes</span>
+        </div>
+
+        <div class="trust-badge-item flex flex-col items-center gap-2.5">
+          <svg class="w-9 h-9 text-[#4A3F35]" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span class="font-roboto text-xs font-medium text-[#1F1A17]">100% Fresh Ingredients</span>
+        </div>
+
+        <div class="trust-badge-item flex flex-col items-center gap-2.5">
+          <svg class="w-9 h-9 text-[#4A3F35]" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+          </svg>
+          <span class="font-roboto text-xs font-medium text-[#1F1A17]">Luxury Gift Boxes</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== VIEW 2: EXPLORE ALL CAFE MENU ==================== -->
+  <div id="view-explore" class="page-view hidden py-12 sm:py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <button onclick="switchView('home')" class="text-xs font-medium text-[#B98F37] hover:underline mb-3 inline-block">← Back to Home</button>
+        <h1 class="trending-heading uppercase">Amelia Cafe Full Menu</h1>
+        <p class="font-roboto text-sm text-[#6E655F] mt-3 max-w-xl mx-auto">
+          Freshly prepared momos, thick shakes, cold coffees, burgers, sandwiches, and artisan chocolates—order directly via Zomato.
+        </p>
+
+        <!-- Category Filter Tabs -->
+        <div id="categoryFilterBar" class="flex flex-wrap items-center justify-center gap-2.5 mt-7"></div>
+      </div>
+
+      <div id="exploreGrid" class="products-grid"></div>
+    </div>
+  </div>
+
+  <!-- ==================== VIEW 3: PRODUCT DETAILS SCREEN ==================== -->
+  <div id="view-product" class="page-view hidden py-12 sm:py-16 bg-white">
+    <div id="productDetailContainer" class="max-w-6xl mx-auto px-4"></div>
+  </div>
+
+  <!-- ==================== VIEW 4: SHOPPING CART & ZOMATO REDIRECT ==================== -->
+  <div id="view-cart" class="page-view hidden py-12 sm:py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-10">
+        <button onclick="switchView('home')" class="text-xs font-medium text-[#B98F37] hover:underline mb-2 inline-block">← Continue Browsing Menu</button>
+        <h1 class="font-serif-title text-3xl sm:text-5xl font-semibold text-[#1F1A17]">Shopping Cart</h1>
+      </div>
+
+      <div id="cartContainer"></div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-[#F5EFE6] border-t border-[#E8DEC9] pt-14 pb-10 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-[#E5DAC5]">
+
+      <!-- Brand & Contact Cards (Replace footer-logo.png or logo.png in your folder) -->
+      <div class="space-y-4">
+        <div class="inline-block bg-white px-4 py-2.5 rounded-xl border border-[#EAE5DC]">
+          <img
+            src="footer-logo.png"
+            alt="Amelia Bites Footer Logo"
+            onerror="this.onerror=null; this.src='logo.png'; this.onerror=function(){this.style.display='none'; this.nextElementSibling.style.display='inline';};"
+            class="h-11 w-auto object-contain"
+          />
+          <span style="display:none;" class="font-serif-title text-xl font-bold text-[#B98F37]">Amelia Bites</span>
+        </div>
+
+        <div class="bg-white rounded-xl p-3.5 border border-[#EAE5DC] flex items-center gap-3">
+          <span class="text-[#B98F37] text-base">📞</span>
+          <div>
+            <span class="block text-[10px] uppercase tracking-wider text-[#6E655F]">10 AM - 11 PM</span>
+            <a href="tel:+91 8446989843" class="text-xs font-semibold text-[#1F1A17]">+91 8446989843</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-3.5 border border-[#EAE5DC] flex items-center gap-3">
+          <span class="text-[#B98F37] text-base">✉️</span>
+          <div>
+            <span class="block text-[10px] uppercase tracking-wider text-[#6E655F]">Email</span>
+            <a href="mailto:amelliabites@gmail.com" class="text-xs font-semibold text-[#1F1A17]">amelliabites@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-roboto text-xs font-bold uppercase tracking-wider text-[#B98F37] mb-4">Quick Links</h4>
+        <ul class="space-y-2.5 text-xs text-[#4A3F35]">
+          <li><button onclick="goToSection('home')" class="hover:text-[#B98F37]">Home</button></li>
+          <li><button onclick="goToSection('story')" class="hover:text-[#B98F37]">About Us</button></li>
+          <li><button onclick="switchView('explore')" class="hover:text-[#B98F37]">Full Cafe Menu</button></li>
+          <li><button onclick="goToSection('celebrate')" class="hover:text-[#B98F37]">Luxury Gift Hampers</button></li>
+          <li><button onclick="openMenuEditor()" class="hover:text-[#B98F37]">Update Menu</button></li>
+        </ul>
+      </div>
+
+      <!-- Cafe Address & Zomato -->
+      <div>
+        <h4 class="font-roboto text-xs font-bold uppercase tracking-wider text-[#B98F37] mb-4">Cafe Location</h4>
+        <p class="text-xs text-[#4A3F35] leading-relaxed mb-4">
+          Amelia Cafe &amp; Bites,<br />
+          Indrayni Colony, Kadolkar Colony,<br />
+          Talegaon Dabhade - 410506, Maharashtra
+        </p>
+        <a
+          href="https://www.zomato.com/pune/amelia-cafe-talegaon"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#E23744] text-white text-xs font-medium hover:opacity-90 transition-opacity">
+          <span>Order on Zomato</span>
+          <span>↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#6E655F] gap-2">
+      <p>© 2026 Amelia Bites &amp; Cafe (Talegaon Dabhade). All rights reserved.</p>
+      <p>Online Ordering Powered by Zomato</p>
+    </div>
+  </footer>
+
+  <!-- ==================== TOAST NOTIFICATION BOX ==================== -->
+  <div id="toastBox" class="fixed bottom-20 right-4 sm:right-6 z-50 hidden max-w-sm bg-[#1F1A17] text-white px-4 py-3 rounded-xl shadow-lg border border-[#B98F37]/40 text-xs sm:text-sm"></div>
+
+  <!-- ==================== FLOATING QUICK-CART BAR ==================== -->
+  <div id="floatingCartPill" class="floating-cart-pill w-[92%] max-w-md">
+    <div class="bg-[#1F1A17] text-white rounded-2xl px-4 py-3 shadow-xl border border-[#B98F37]/50 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-[#B98F37] text-white font-bold text-sm flex items-center justify-center" id="floatingCartCount">0</div>
+        <div>
+          <span class="block text-[11px] text-[#D6CEC2] uppercase tracking-wider">Your Cafe Order</span>
+          <span class="block text-sm font-bold text-white" id="floatingCartTotal">₹ 0</span>
+        </div>
+      </div>
+      <button onclick="switchView('cart')" class="px-4 py-2 rounded-xl bg-[#B98F37] hover:bg-[#9E782B] text-white text-xs font-semibold transition-colors flex items-center gap-1.5">
+        <span>View Cart</span>
+        <span>→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== CAFE MENU EDITOR MODAL ==================== -->
+  <div id="menuEditorModal" class="fixed inset-0 z-50 hidden bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 shadow-xl">
+      <div class="flex items-center justify-between pb-4 border-b border-[#EFEAE1]">
+        <h3 class="font-serif-title text-2xl font-semibold text-[#1F1A17]">Update Cafe Menu &amp; Prices</h3>
+        <button onclick="closeMenuEditor()" class="w-8 h-8 rounded-full bg-[#FAF8F5] text-[#1F1A17] flex items-center justify-center">✕</button>
+      </div>
+
+      <form onsubmit="addNewMenuItem(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-5 bg-[#FAF8F5] p-4 rounded-xl">
+        <input id="newItemName" type="text" required placeholder="Food Name (e.g. Cheese Corn Momos)" class="px-3 py-2 rounded-lg border border-[#E2DDD3] text-xs bg-white" />
+        <input id="newItemPrice" type="number" required placeholder="Price in ₹ (e.g. 149)" class="px-3 py-2 rounded-lg border border-[#E2DDD3] text-xs bg-white" />
+        <select id="newItemCategory" class="px-3 py-2 rounded-lg border border-[#E2DDD3] text-xs bg-white">
+          <option value="Momos">Momos</option>
+          <option value="Coffee & Shakes">Coffee &amp; Shakes</option>
+          <option value="Snacks & Burgers">Snacks &amp; Burgers</option>
+          <option value="Chocolates & Gifts">Chocolates &amp; Gifts</option>
+        </select>
+        <input id="newItemImg" type="text" placeholder="Image file or link (e.g. burger.png)" class="px-3 py-2 rounded-lg border border-[#E2DDD3] text-xs bg-white" />
+        <label class="sm:col-span-2 flex items-center justify-between gap-2 px-3 py-2 rounded-lg border border-dashed border-[#B98F37] bg-white text-xs text-[#4A3F35] cursor-pointer hover:bg-[#FAF8F5]">
+          <span id="newItemFileLabel" class="truncate">Or upload food image from device (PNG, JPG, WEBP)</span>
+          <span class="px-2.5 py-1 rounded-md bg-[#F5EFE6] text-[#B98F37] font-medium shrink-0">Choose File</span>
+          <input id="newItemFile" type="file" accept="image/*" onchange="handleNewItemFileSelect(this)" class="hidden" />
+        </label>
+        <button type="submit" class="sm:col-span-2 py-2.5 rounded-lg bg-[#B98F37] text-white text-xs font-medium hover:bg-[#9E782B]">
+          + Add Food Item to Menu
+        </button>
+      </form>
+
+      <div id="editorItemsList" class="space-y-2.5"></div>
+    </div>
+  </div>
+
+  <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+  <script>
+    const ZOMATO_URL = 'https://www.zomato.com/pune/amelia-cafe-talegaon';
+
+    const DEFAULT_PRODUCTS = [
+      {
+        id: 'veg-steamed-momos',
+        name: 'Mix Veg Steamed Momos (6 Pcs)',
+        category: 'Momos',
+        price: 99,
+        rating: '4.6',
+        reviews: 412,
+        trending: true,
+        offer: false,
+        img: 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&w=700&q=80',
+        desc: 'Soft hand-folded dumplings stuffed with finely chopped farm-fresh vegetables, ginger, and aromatic herbs, served steaming hot with spicy red chutney.'
+      },
+      {
+        id: 'paneer-steam-momos',
+        name: 'Paneer Steam Momos (6 Pcs)',
+        category: 'Momos',
+        price: 137,
+        rating: '4.7',
+        reviews: 389,
+        trending: true,
+        offer: false,
+        img: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=700&q=80',
+        desc: 'Juicy cottage cheese filling seasoned with mild spices wrapped in delicate steamed dough and served with house special schezwan dip.'
+      },
+      {
+        id: 'classic-cold-coffee',
+        name: 'Classic Thick Cold Coffee',
+        category: 'Coffee & Shakes',
+        price: 120,
+        rating: '4.8',
+        reviews: 645,
+        trending: true,
+        offer: false,
+        img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80',
+        desc: 'Rich roasted espresso blended with chilled creamy milk and velvety froth for the ultimate Talegaon cafe refreshment.'
+      },
+      {
+        id: 'dubai-kunafa-chocolate',
+        name: 'Dubai Kunafa Pistachio Chocolate',
+        category: 'Chocolates & Gifts',
+        price: 349,
+        rating: '4.9',
+        reviews: 518,
+        trending: true,
+        offer: false,
+        img: 'https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&w=700&q=80',
+        desc: 'Signature handcrafted milk chocolate bar filled with crispy golden kunafa strands and roasted Iranian pistachio cream.'
+      },
+      {
+        id: 'strawberry-milkshake',
+        name: 'Strawberry Thick Milkshake',
+        category: 'Coffee & Shakes',
+        price: 179,
+        rating: '4.6',
+        reviews: 290,
+        trending: true,
+        offer: false,
+        img: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=700&q=80',
+        desc: 'Creamy milkshake crafted with luscious strawberry crush, chilled milk, and topped with whipped cream.'
+      },
+      {
+        id: 'chocolate-milkshake',
+        name: 'Belgian Chocolate Milkshake',
+        category: 'Coffee & Shakes',
+        price: 139,
+        rating: '4.7',
+        reviews: 470,
+        trending: true,
+        offer: false,
+        img: 'https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=80',
+        desc: 'Decadent dark cocoa shake drizzled with chocolate fudge syrup for true chocolate lovers.'
+      },
+      {
+        id: 'mango-icecream-shake',
+        name: 'Mango Milkshake With Ice Cream',
+        category: 'Coffee & Shakes',
+        price: 129,
+        rating: '4.6',
+        reviews: 315,
+        trending: true,
+        offer: false,
+        img: 'https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?auto=format&fit=crop&w=700&q=80',
+        desc: 'Alphonso mango thick shake crowned with a generous scoop of vanilla ice cream.'
+      },
+      {
+        id: 'almond-crunch-chocolate',
+        name: 'Almond Crunch Milk Chocolate',
+        category: 'Chocolates & Gifts',
+        price: 245,
+        rating: '4.8',
+        reviews: 710,
+        trending: true,
+        offer: false,
+        img: 'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=700&q=80',
+        desc: 'Roasted California almonds enrobed in smooth silky milk chocolate—ideal for snacking or gifting.'
+      },
+      {
+        id: 'offer-momos-coffee-combo',
+        name: 'Momos + Cold Coffee Cafe Combo',
+        category: 'Momos',
+        price: 189,
+        origPrice: 219,
+        discount: '14% OFF',
+        rating: '4.8',
+        reviews: 264,
+        trending: false,
+        offer: true,
+        img: 'https://images.unsplash.com/photo-1625220194771-7ebdea0b70b9?auto=format&fit=crop&w=700&q=80',
+        desc: '1 Plate Mix Veg Steamed Momos paired with 1 Chilled Classic Cold Coffee at a special combo price.'
+      },
+      {
+        id: 'offer-paneer-grill-sandwich',
+        name: 'Paneer Tikka Grill Sandwich',
+        category: 'Snacks & Burgers',
+        price: 129,
+        origPrice: 159,
+        discount: '19% OFF',
+        rating: '4.7',
+        reviews: 332,
+        trending: false,
+        offer: true,
+        img: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=700&q=80',
+        desc: 'Triple-layered toasted jumbo bread loaded with tandoori spiced paneer, melted mozzarella, and mint mayo.'
+      },
+      {
+        id: 'offer-crispy-veg-burger',
+        name: 'Crispy Veg Cheese Burger + Fries',
+        category: 'Snacks & Burgers',
+        price: 149,
+        origPrice: 189,
+        discount: '21% OFF',
+        rating: '4.6',
+        reviews: 288,
+        trending: false,
+        offer: true,
+        img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=700&q=80',
+        desc: 'Golden herb-crusted patty layered with cheddar slice, fresh lettuce, and smoky sauce served with salted fries.'
+      },
+      {
+        id: 'offer-alfredo-pasta',
+        name: 'Creamy White Sauce Alfredo Pasta',
+        category: 'Snacks & Burgers',
+        price: 169,
+        origPrice: 199,
+        discount: '15% OFF',
+        rating: '4.7',
+        reviews: 219,
+        trending: false,
+        offer: true,
+        img: 'https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=700&q=80',
+        desc: 'Penne pasta tossed in velvety parmesan cheese sauce with sweet corn, bell peppers, and Italian herbs.'
+      }
+    ];
+
+    const TESTIMONIALS = [
+      {
+        quote: '"Best steamed momos and thick cold coffee in Talegaon Dabhade! Their Dubai pistachio chocolate bar and gift hampers are also unmatched in taste and packaging."',
+        author: 'Tanmay Surse'
+      },
+      {
+        quote: '"Ordered Paneer Steam Momos and Strawberry Milkshake via Zomato—arrived piping hot and super fresh. Easily our favorite evening hangout spot."',
+        author: 'Sakshi Kulkarni'
+      },
+      {
+        quote: '"We ordered 25 customized Amelia Bites chocolate gift boxes for a family celebration. Every guest loved the presentation and rich taste!"',
+        author: 'Sandesh Deshmukh'
+      }
+    ];
+
+    let products = JSON.parse(localStorage.getItem('amelia_products')) || DEFAULT_PRODUCTS;
+    let cart = JSON.parse(localStorage.getItem('amelia_cart')) || [];
+    let wishlist = JSON.parse(localStorage.getItem('amelia_wishlist')) || [];
+    let activeCategory = 'All';
+    let searchQuery = '';
+    let testimonialIdx = 0;
+    let activeSection = 'home';
+
+    function saveState() {
+      localStorage.setItem('amelia_products', JSON.stringify(products));
+      localStorage.setItem('amelia_cart', JSON.stringify(cart));
+      localStorage.setItem('amelia_wishlist', JSON.stringify(wishlist));
+    }
+
+    function showToast(msg) {
+      const box = document.getElementById('toastBox');
+      box.textContent = msg;
+      box.classList.remove('hidden');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        box.classList.add('hidden');
+      }, 3200);
+    }
+
+    function handleImgFallback(img, label) {
+      img.onerror = null;
+      img.src = `https://placehold.co/400x300/FAF8F5/B98F37?text=${encodeURIComponent(label || 'Amelia Bites')}`;
+    }
+
+    /* ==================== NAVIGATION & UNDERLINE ANIMATION ==================== */
+    function moveNavIndicator(btn) {
+      const bar = document.getElementById('navUnderlineBar');
+      if (!bar || !btn) return;
+      bar.style.width = `${btn.offsetWidth}px`;
+      bar.style.transform = `translateX(${btn.offsetLeft}px)`;
+      bar.style.opacity = '1';
+    }
+
+    function setActiveNavSection(sectionKey) {
+      activeSection = sectionKey;
+      document.querySelectorAll('#desktopNav .nav-link').forEach(link => {
+        if (link.dataset.section === sectionKey) {
+          link.classList.add('text-[#B98F37]');
+        } else {
+          link.classList.remove('text-[#B98F37]');
+        }
+      });
+      document.querySelectorAll('.mobile-nav-item').forEach(item => {
+        if (item.dataset.mobileNav === sectionKey) {
+          item.classList.add('bg-[#F5EFE6]', 'text-[#B98F37]');
+          item.classList.remove('text-[#1F1A17]');
+        } else {
+          item.classList.remove('bg-[#F5EFE6]', 'text-[#B98F37]');
+          item.classList.add('text-[#1F1A17]');
+        }
+      });
+      const activeBtn = document.querySelector(`#desktopNav .nav-link[data-section="${sectionKey}"]`);
+      if (activeBtn) moveNavIndicator(activeBtn);
+    }
+
+    function resetNavIndicator() {
+      const activeBtn = document.querySelector(`#desktopNav .nav-link[data-section="${activeSection}"]`);
+      if (activeBtn) moveNavIndicator(activeBtn);
+    }
+
+    function toggleMobileMenu(forceState) {
+      const backdrop = document.getElementById('mobileDrawerBackdrop');
+      const panel = document.getElementById('mobileDrawerPanel');
+      const btn = document.getElementById('mobileMenuBtn');
+      if (!backdrop || !panel) return;
+
+      const isOpen = typeof forceState === 'boolean' ? forceState : !panel.classList.contains('open');
+      backdrop.classList.toggle('open', isOpen);
+      panel.classList.toggle('open', isOpen);
+      if (btn) btn.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    function switchView(viewName) {
+      document.querySelectorAll('.page-view').forEach(v => v.classList.add('hidden'));
+      const target = document.getElementById(`view-${viewName}`);
+      if (target) target.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (viewName === 'explore') {
+        setActiveNavSection('explore');
+        renderExplorePage();
+      } else if (viewName === 'cart') {
+        renderCartPage();
+      } else if (viewName === 'home') {
+        setActiveNavSection('home');
+        renderTrendingGrid();
+        renderSpecialOffers();
+      }
+    }
+
+    function goToSection(sectionId) {
+      const homeView = document.getElementById('view-home');
+      if (homeView.classList.contains('hidden')) {
+        switchView('home');
+      }
+      setActiveNavSection(sectionId);
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 60);
+    }
+
+    function handleSearch(val) {
+      searchQuery = val.trim().toLowerCase();
+      if (searchQuery.length > 0 && document.getElementById('view-explore').classList.contains('hidden')) {
+        switchView('explore');
+      } else {
+        renderTrendingGrid();
+        renderExplorePage();
+      }
+    }
+
+    /* ==================== CARD RENDERING (3-PART DIVIDED 300x422 BOX) ==================== */
+    function createProductCardHTML(product, isOfferCard = false, index = 0) {
+      const isWished = wishlist.includes(product.id);
+      const cartItem = cart.find(i => i.id === product.id);
+      const qtyInCart = cartItem ? cartItem.qty : 0;
+      const cardExtraClass = isOfferCard ? 'shrink-0' : '';
+      const staggerDelay = Math.min(index * 70, 560);
+
+      const actionControlHTML = qtyInCart > 0
+        ? `
+          <div class="qty-stepper-btn" role="group" aria-label="Quantity selector for ${product.name}">
+            <button type="button" onclick="updateCardQty('${product.id}', -1)" aria-label="Decrease quantity">−</button>
+            <span>${qtyInCart}</span>
+            <button type="button" onclick="updateCardQty('${product.id}', 1)" aria-label="Increase quantity">+</button>
+          </div>
+        `
+        : `
+          <button type="button" onclick="buyNowFromCard('${product.id}', event)" class="buy-now-btn">
+            BUY NOW
+          </button>
+        `;
+
+      return `
+        <div onmousemove="handleCardTilt(event, this)" onmouseleave="resetCardTilt(this)" style="animation-delay: ${staggerDelay}ms;" class="product-card card-stagger ${cardExtraClass}">
+          <!-- Part 1: Food Image & Wishlist Heart -->
+          <div class="card-part-1">
+            <img
+              onclick="openProductPage('${product.id}')"
+              src="${product.img}"
+              alt="${product.name}"
+              onerror="handleImgFallback(this, '${product.name.replace(/'/g, '')}')"
+              class="w-full h-full object-cover rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300"
+            />
+            <button
+              onclick="toggleWishlist('${product.id}')"
+              aria-label="Wishlist"
+              class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 hover:bg-white shadow-2xs flex items-center justify-center text-[#B98F37] transition-transform active:scale-90">
+              ${isWished ? '♥' : '♡'}
+            </button>
+          </div>
+
+          <!-- Part 2: Food Description/Title & Star Rating (Separated by 2px gap) -->
+          <div onclick="openProductPage('${product.id}')" class="card-part-2">
+            <h3 class="product-title">${product.name}</h3>
+            <div class="mt-2 flex items-center gap-1 text-xs font-roboto">
+              <span class="text-[#B98F37]">★</span>
+              <span class="font-medium text-[#1F1A17]">${product.rating}</span>
+              <span class="text-[#6E655F]">(${product.reviews})</span>
+            </div>
+          </div>
+
+          <!-- Part 3: Price & BUY NOW / (- 1 +) Button (Separated by 2px gap) -->
+          <div class="card-part-3">
+            <div class="flex items-center justify-center gap-2">
+              <span class="font-roboto text-base sm:text-lg font-bold text-[#1F1A17]">₹ ${product.price}</span>
+              ${product.origPrice ? `<span class="font-roboto text-xs text-[#9A908A] line-through">₹ ${product.origPrice}</span>` : ''}
+              ${product.discount ? `<span class="px-2 py-0.5 rounded-full bg-[#B98F37] text-white text-[10px] font-medium">${product.discount}</span>` : ''}
+            </div>
+
+            ${actionControlHTML}
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTrendingGrid() {
+      const grid = document.getElementById('trendingGrid');
+      if (!grid) return;
+
+      const list = products.filter(p => p.trending).slice(0, 8);
+      grid.innerHTML = list.map((p, idx) => createProductCardHTML(p, false, idx)).join('');
+    }
+
+    function handleCardTilt(e, card) {
+      if (window.innerWidth < 960) return;
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(900px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`;
+    }
+
+    function resetCardTilt(card) {
+      card.style.transform = '';
+    }
+
+    function flyItemToCart(sourceEvent, imgSrc) {
+      const cartBtn = document.getElementById('headerCartBtn');
+      if (!sourceEvent || !cartBtn) return;
+
+      const startRect = sourceEvent.currentTarget.getBoundingClientRect();
+      const endRect = cartBtn.getBoundingClientRect();
+
+      const flyer = document.createElement('img');
+      flyer.src = imgSrc;
+      flyer.className = 'flying-cart-dot';
+      flyer.style.left = `${startRect.left + startRect.width / 2 - 17}px`;
+      flyer.style.top = `${startRect.top + startRect.height / 2 - 17}px`;
+      document.body.appendChild(flyer);
+
+      requestAnimationFrame(() => {
+        const dx = endRect.left + endRect.width / 2 - (startRect.left + startRect.width / 2);
+        const dy = endRect.top + endRect.height / 2 - (startRect.top + startRect.height / 2);
+        flyer.style.transform = `translate(${dx}px, ${dy}px) scale(0.35)`;
+        flyer.style.opacity = '0.2';
+      });
+
+      setTimeout(() => {
+        flyer.remove();
+        const badge = document.getElementById('cartBadge');
+        if (badge) {
+          badge.classList.remove('cart-pop');
+          void badge.offsetWidth;
+          badge.classList.add('cart-pop');
+        }
+      }, 680);
+    }
+
+    function refreshAllProductViews() {
+      renderTrendingGrid();
+      renderSpecialOffers();
+      if (!document.getElementById('view-explore').classList.contains('hidden')) {
+        renderExplorePage();
+      }
+      if (!document.getElementById('view-cart').classList.contains('hidden')) {
+        renderCartPage();
+      }
+    }
+
+    function addToCart(productId, qty = 1, note = '', sourceEvent = null) {
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.qty += qty;
+        if (note) existing.note = note;
+      } else {
+        cart.push({ id: productId, qty, note });
+      }
+      const prod = products.find(p => p.id === productId);
+      if (sourceEvent && prod) {
+        flyItemToCart(sourceEvent, prod.img);
+      }
+      saveState();
+      updateCartBadge();
+      refreshAllProductViews();
+      showToast(`Added "${prod ? prod.name : 'Item'}" to cart`);
+    }
+
+    function buyNowFromCard(productId, sourceEvent) {
+      addToCart(productId, 1, '', sourceEvent);
+    }
+
+    function updateCardQty(productId, delta) {
+      const idx = cart.findIndex(i => i.id === productId);
+      if (idx === -1) return;
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) {
+        cart.splice(idx, 1);
+        showToast('Removed from cart');
+      }
+      saveState();
+      updateCartBadge();
+      refreshAllProductViews();
+    }
+
+    function updateCartQty(productId, delta) {
+      updateCardQty(productId, delta);
+    }
+
+    function renderSpecialOffers() {
+      const track = document.getElementById('specialOffersTrack');
+      if (!track) return;
+      const list = products.filter(p => p.offer);
+      track.innerHTML = list.map((p, idx) => createProductCardHTML(p, true, idx)).join('');
+    }
+
+    function scrollOffers(offset) {
+      const track = document.getElementById('specialOffersTrack');
+      if (track) track.scrollBy({ left: offset, behavior: 'smooth' });
+    }
+
+    function initOfferScrollHint() {
+      const track = document.getElementById('specialOffersTrack');
+      const hint = document.getElementById('mobileOfferSwipeHint');
+      if (!track || !hint) return;
+
+      // Subtle initial peek animation on mobile when section enters view
+      const peekObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && window.innerWidth <= 960) {
+            setTimeout(() => {
+              track.scrollTo({ left: 55, behavior: 'smooth' });
+              setTimeout(() => {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+              }, 550);
+            }, 350);
+            obs.disconnect();
+          }
+        });
+      }, { threshold: 0.35 });
+
+      peekObserver.observe(track);
+
+      track.addEventListener('scroll', () => {
+        if (track.scrollLeft > 24) {
+          hint.style.opacity = '0.6';
+        } else {
+          hint.style.opacity = '1';
+        }
+      }, { passive: true });
+    }
+
+    /* ==================== EXPLORE ALL MENU PAGE ==================== */
+    function renderExplorePage() {
+      const filterBar = document.getElementById('categoryFilterBar');
+      const grid = document.getElementById('exploreGrid');
+      if (!filterBar || !grid) return;
+
+      const categories = ['All', ...new Set(products.map(p => p.category))];
+      filterBar.innerHTML = categories.map(cat => `
+        <button
+          onclick="setExploreCategory('${cat}')"
+          class="px-4 py-2 rounded-full text-xs font-medium border transition-colors ${activeCategory === cat ? 'bg-[#B98F37] text-white border-[#B98F37]' : 'bg-[#FAF8F5] text-[#4A3F35] border-[#E6DFD3] hover:border-[#B98F37]'}">
+          ${cat}
+        </button>
+      `).join('');
+
+      const filtered = products.filter(p => {
+        const matchesCat = activeCategory === 'All' || p.category === activeCategory;
+        const matchesSearch = !searchQuery || p.name.toLowerCase().includes(searchQuery) || p.category.toLowerCase().includes(searchQuery);
+        return matchesCat && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 text-sm text-[#6E655F]">No food items matched "${searchQuery}". Try another search!</div>`;
+      } else {
+        grid.innerHTML = filtered.map((p, idx) => createProductCardHTML(p, false, idx)).join('');
+      }
+    }
+
+    function setExploreCategory(cat) {
+      activeCategory = cat;
+      renderExplorePage();
+    }
+
+    /* ==================== PRODUCT DETAILS VIEW ==================== */
+    function openProductPage(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      const related = products.filter(p => p.id !== product.id).slice(0, 4);
+      const container = document.getElementById('productDetailContainer');
+
+      container.innerHTML = `
+        <button onclick="switchView('home')" class="text-xs font-medium text-[#B98F37] hover:underline mb-6 inline-block">← Back to Menu</button>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-start">
+          <div class="bg-[#FAF8F5] rounded-2xl p-6 border border-[#EAE4D9]">
+            <img src="${product.img}" alt="${product.name}" onerror="handleImgFallback(this, '${product.name.replace(/'/g, '')}')" class="w-full h-80 sm:h-96 object-cover rounded-xl" />
+          </div>
+
+          <div class="space-y-5">
+            <span class="inline-block px-3 py-1 rounded-full bg-[#F5EFE6] text-[#B98F37] text-xs font-medium">${product.category}</span>
+            <h1 class="font-poppins text-2xl sm:text-3xl font-semibold text-[#1F1A17]">${product.name}</h1>
+
+            <div class="flex items-center gap-2 text-sm">
+              <span class="text-[#B98F37]">★ ${product.rating}</span>
+              <span class="text-[#6E655F]">(${product.reviews} customer ratings)</span>
+            </div>
+
+            <div class="text-2xl font-bold text-[#1F1A17]">₹ ${product.price}</div>
+
+            <p class="font-roboto text-sm text-[#6E655F] leading-relaxed">${product.desc}</p>
+
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wider text-[#4A3F35] mb-2">Gift Tag / Special Cafe Note (Optional)</label>
+              <input id="detailGiftNote" type="text" placeholder="e.g., Extra spicy chutney or Birthday wish..." class="w-full px-4 py-2.5 rounded-xl border border-[#E2DDD3] text-sm outline-none focus:border-[#B98F37]" />
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <button onclick="addToCart('${product.id}', 1, document.getElementById('detailGiftNote').value)" class="px-6 py-3 rounded-xl border border-[#B98F37] text-[#B98F37] hover:bg-[#FAF8F5] text-sm font-medium transition-colors">
+                Add to Cart
+              </button>
+              <button onclick="addToCart('${product.id}', 1, document.getElementById('detailGiftNote').value); switchView('cart');" class="px-7 py-3 rounded-xl bg-[#B98F37] hover:bg-[#9E782B] text-white text-sm font-medium transition-colors">
+                Order via Zomato
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 pt-12 border-t border-[#EFEAE1]">
+          <h2 class="font-serif-title text-2xl sm:text-3xl font-semibold text-center text-[#1F1A17] mb-8">Related Cafe Favorites</h2>
+          <div class="products-grid">
+            ${related.map(r => createProductCardHTML(r, false)).join('')}
+          </div>
+        </div>
+      `;
+
+      switchView('product');
+    }
+
+    /* ==================== CART & ZOMATO REDIRECT ==================== */
+    function toggleWishlist(productId) {
+      if (wishlist.includes(productId)) {
+        wishlist = wishlist.filter(id => id !== productId);
+        showToast('Removed from wishlist');
+      } else {
+        wishlist.push(productId);
+        showToast('Saved to your favorites ♥');
+      }
+      saveState();
+      refreshAllProductViews();
+    }
+
+    function updateCartBadge() {
+      const badge = document.getElementById('cartBadge');
+      const drawerCount = document.getElementById('mobileDrawerCartCount');
+      const floatingPill = document.getElementById('floatingCartPill');
+      const floatingCount = document.getElementById('floatingCartCount');
+      const floatingTotal = document.getElementById('floatingCartTotal');
+
+      const total = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalAmount = cart.reduce((sum, item) => {
+        const prod = products.find(p => p.id === item.id);
+        return sum + (prod ? prod.price * item.qty : 0);
+      }, 0);
+
+      if (drawerCount) drawerCount.textContent = total;
+      if (floatingCount) floatingCount.textContent = total;
+      if (floatingTotal) floatingTotal.textContent = `₹ ${totalAmount}`;
+
+      if (total > 0) {
+        badge.textContent = total;
+        badge.classList.remove('hidden');
+        const isCartViewOpen = !document.getElementById('view-cart').classList.contains('hidden');
+        if (floatingPill) floatingPill.classList.toggle('visible', !isCartViewOpen);
+      } else {
+        badge.classList.add('hidden');
+        if (floatingPill) floatingPill.classList.remove('visible');
+      }
+    }
+
+    function renderCartPage() {
+      updateCartBadge();
+      const container = document.getElementById('cartContainer');
+      if (!container) return;
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="bg-[#FAF8F5] rounded-2xl p-12 text-center max-w-xl mx-auto border border-[#EAE4D9]">
+            <p class="font-serif-title text-2xl text-[#1F1A17] mb-2">Your cart is empty</p>
+            <p class="text-xs sm:text-sm text-[#6E655F] mb-6">Add your favorite momos, thick shakes, or chocolates to prepare your Zomato order.</p>
+            <button onclick="switchView('explore')" class="px-6 py-3 rounded-xl bg-[#B98F37] text-white text-sm font-medium hover:bg-[#9E782B]">
+              Explore Menu
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      let subtotal = 0;
+      let totalCount = 0;
+
+      const rowsHTML = cart.map(item => {
+        const prod = products.find(p => p.id === item.id);
+        if (!prod) return '';
+        subtotal += prod.price * item.qty;
+        totalCount += item.qty;
+
+        return `
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 py-5 border-b border-[#EAE4D9]">
+            <div class="flex items-center gap-4">
+              <img src="${prod.img}" alt="${prod.name}" onerror="handleImgFallback(this, '${prod.name.replace(/'/g, '')}')" class="w-20 h-20 rounded-xl object-cover bg-white border border-[#EAE4D9]" />
+              <div>
+                <h3 class="font-poppins text-base font-medium text-[#1F1A17]">${prod.name}</h3>
+                <p class="text-xs text-[#B98F37] mt-0.5">★ ${prod.rating} (${prod.reviews})</p>
+                <p class="text-sm font-bold text-[#1F1A17] mt-1">₹ ${prod.price}</p>
+                ${item.note ? `<p class="text-xs text-[#6E655F] mt-1">Note: ${item.note}</p>` : ''}
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 bg-white border border-[#E2DDD3] rounded-full px-3 py-1">
+              <button onclick="updateCartQty('${prod.id}', -1)" class="w-6 h-6 text-sm font-bold text-[#4A3F35] hover:text-[#B98F37]">−</button>
+              <span class="text-sm font-semibold min-w-[20px] text-center">${item.qty}</span>
+              <button onclick="updateCartQty('${prod.id}', 1)" class="w-6 h-6 text-sm font-bold text-[#4A3F35] hover:text-[#B98F37]">+</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      container.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div class="lg:col-span-2 bg-[#FAF8F5] rounded-2xl p-6 border border-[#EAE4D9]">
+            ${rowsHTML}
+            <div class="pt-4 text-right font-roboto text-base font-bold text-[#1F1A17]">
+              Subtotal (${totalCount} items): ₹ ${subtotal.toFixed(2)}
+            </div>
+          </div>
+
+          <div class="bg-[#FAF8F5] rounded-2xl p-6 border border-[#EAE4D9] space-y-4">
+            <div class="flex items-center justify-between text-base font-bold text-[#1F1A17]">
+              <span>Subtotal (${totalCount} items):</span>
+              <span>₹ ${subtotal.toFixed(2)}</span>
+            </div>
+            <p class="text-xs text-[#6E655F] leading-relaxed">
+              Clicking below copies your selected items to your clipboard and opens <strong>Amelia Cafe (Talegaon)</strong> directly on Zomato to complete delivery &amp; payment.
+            </p>
+            <button onclick="proceedToZomato()" class="w-full py-3.5 rounded-xl bg-[#B98F37] hover:bg-[#9E782B] text-white font-roboto text-sm font-semibold transition-colors shadow-xs">
+              Proceed to Buy on Zomato ↗
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function proceedToZomato() {
+      const summaryLines = cart.map(item => {
+        const prod = products.find(p => p.id === item.id);
+        return prod ? `${item.qty}x ${prod.name} (₹${prod.price * item.qty})` : '';
+      }).filter(Boolean);
+
+      const orderText = `Amelia Cafe Order:\n${summaryLines.join('\n')}`;
+
+      // Copy order list using textarea fallback compatible with iFrames
+      const tempInput = document.createElement('textarea');
+      tempInput.value = orderText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+      } catch (err) {
+        console.warn('Clipboard copy failed:', err);
+      }
+      document.body.removeChild(tempInput);
+
+      showToast('Order copied! Opening Amelia Cafe on Zomato...');
+      setTimeout(() => {
+        window.open(ZOMATO_URL, '_blank', 'noopener,noreferrer');
+      }, 650);
+    }
+
+    /* ==================== SPECIAL OFFER LIVE COUNTDOWN TIMER (5-HOUR AUTO-RESET) ==================== */
+    function startOfferTimer() {
+      const FIVE_HOURS_IN_SECONDS = 5 * 3600;
+      let remainingSeconds = FIVE_HOURS_IN_SECONDS;
+
+      const updateDisplay = () => {
+        const hrs = String(Math.floor(remainingSeconds / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((remainingSeconds % 3600) / 60)).padStart(2, '0');
+        const secs = String(remainingSeconds % 60).padStart(2, '0');
+
+        const hEl = document.getElementById('offerHours');
+        const mEl = document.getElementById('offerMinutes');
+        const sEl = document.getElementById('offerSeconds');
+        if (hEl) hEl.textContent = hrs;
+        if (mEl) mEl.textContent = mins;
+        if (sEl) sEl.textContent = secs;
+      };
+
+      updateDisplay();
+
+      setInterval(() => {
+        if (remainingSeconds <= 0) {
+          remainingSeconds = FIVE_HOURS_IN_SECONDS;
+        } else {
+          remainingSeconds--;
+        }
+        updateDisplay();
+      }, 1000);
+    }
+
+    /* ==================== TESTIMONIALS ==================== */
+    function renderTestimonial() {
+      const quoteEl = document.getElementById('testimonialQuote');
+      const authorEl = document.getElementById('testimonialAuthor');
+      const dotsEl = document.getElementById('testimonialDots');
+      if (!quoteEl || !authorEl || !dotsEl) return;
+
+      const item = TESTIMONIALS[testimonialIdx];
+      quoteEl.style.opacity = '0';
+      authorEl.style.opacity = '0';
+      setTimeout(() => {
+        quoteEl.textContent = item.quote;
+        authorEl.textContent = item.author;
+        quoteEl.style.opacity = '1';
+        authorEl.style.opacity = '1';
+      }, 160);
+
+      dotsEl.innerHTML = TESTIMONIALS.map((_, i) => `
+        <button
+          onclick="testimonialIdx = ${i}; renderTestimonial();"
+          aria-label="Testimonial ${i + 1}"
+          class="w-2 h-2 rounded-full transition-all ${i === testimonialIdx ? 'bg-[#B98F37] w-4' : 'bg-[#D6CEC2]'}">
+        </button>
+      `).join('');
+    }
+
+    /* ==================== CAFE MENU EDITOR (NO BACKEND) ==================== */
+    let uploadedNewItemDataUrl = '';
+
+    function handleNewItemFileSelect(input) {
+      const file = input.files && input.files[0];
+      const labelEl = document.getElementById('newItemFileLabel');
+      if (!file) {
+        uploadedNewItemDataUrl = '';
+        if (labelEl) labelEl.textContent = 'Or upload food image from device (PNG, JPG, WEBP)';
+        return;
+      }
+      if (labelEl) labelEl.textContent = `Selected: ${file.name}`;
+      const reader = new FileReader();
+      reader.onload = function (evt) {
+        uploadedNewItemDataUrl = evt.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function openMenuEditor() {
+      uploadedNewItemDataUrl = '';
+      renderEditorList();
+      document.getElementById('menuEditorModal').classList.remove('hidden');
+    }
+
+    function closeMenuEditor() {
+      document.getElementById('menuEditorModal').classList.add('hidden');
+    }
+
+    function renderEditorList() {
+      const list = document.getElementById('editorItemsList');
+      list.innerHTML = products.map((p, idx) => `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 p-3 rounded-xl border border-[#EAE4D9] text-xs">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <img src="${p.img}" alt="${p.name}" onerror="handleImgFallback(this, '${p.name.replace(/'/g, '')}')" class="w-10 h-10 rounded-lg object-cover bg-[#FAF7F8] shrink-0" />
+            <div class="min-w-0 flex-1">
+              <span class="block font-medium text-[#1F1A17] truncate">${p.name}</span>
+              <input
+                type="text"
+                value="${p.img.startsWith('data:') ? '' : p.img}"
+                placeholder="${p.img.startsWith('data:') ? 'Uploaded image active (or enter burger.png)' : 'Image path e.g. burger.png'}"
+                onchange="updateProductImage(${idx}, this.value)"
+                class="mt-1 w-full px-2 py-1 rounded-md border border-[#E2DDD3] text-[11px] text-[#6E655F] bg-[#FAF8F5]"
+              />
+            </div>
+          </div>
+          <div class="flex items-center justify-end gap-2 shrink-0">
+            <label class="px-2.5 py-1 rounded-md bg-[#F5EFE6] text-[#B98F37] font-medium cursor-pointer hover:bg-[#B98F37] hover:text-white transition-colors">
+              Upload
+              <input type="file" accept="image/*" onchange="uploadExistingProductImage(${idx}, this)" class="hidden" />
+            </label>
+            <span>₹</span>
+            <input
+              type="number"
+              value="${p.price}"
+              onchange="updateProductPrice(${idx}, this.value)"
+              class="w-16 px-2 py-1 rounded-md border border-[#E2DDD3] text-right font-bold"
+            />
+            <button onclick="deleteMenuItem(${idx})" class="text-red-500 hover:underline px-1">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function updateProductImage(idx, newImgPath) {
+      const trimmed = newImgPath.trim();
+      if (trimmed) {
+        products[idx].img = trimmed;
+        saveState();
+        renderEditorList();
+        refreshAllProductViews();
+        showToast('Food image updated!');
+      }
+    }
+
+    function uploadExistingProductImage(idx, input) {
+      const file = input.files && input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (evt) {
+        products[idx].img = evt.target.result;
+        saveState();
+        renderEditorList();
+        refreshAllProductViews();
+        showToast(`Uploaded image for "${products[idx].name}"!`);
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function updateProductPrice(idx, newPrice) {
+      const val = parseInt(newPrice, 10);
+      if (!isNaN(val) && val > 0) {
+        products[idx].price = val;
+        saveState();
+        renderTrendingGrid();
+        renderSpecialOffers();
+        showToast('Price updated!');
+      }
+    }
+
+    function deleteMenuItem(idx) {
+      products.splice(idx, 1);
+      saveState();
+      renderEditorList();
+      renderTrendingGrid();
+      renderSpecialOffers();
+      showToast('Item removed from menu');
+    }
+
+    function addNewMenuItem(e) {
+      e.preventDefault();
+      const name = document.getElementById('newItemName').value.trim();
+      const price = parseInt(document.getElementById('newItemPrice').value, 10);
+      const category = document.getElementById('newItemCategory').value;
+      const typedImg = document.getElementById('newItemImg').value.trim();
+      const img = uploadedNewItemDataUrl || typedImg || 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=700&q=80';
+
+      products.unshift({
+        id: 'item-' + Date.now(),
+        name,
+        category,
+        price,
+        rating: '4.8',
+        reviews: 120,
+        trending: true,
+        offer: false,
+        img,
+        desc: `Freshly prepared ${name} from Amelia Cafe & Bites, Talegaon Dabhade.`
+      });
+
+      saveState();
+      e.target.reset();
+      uploadedNewItemDataUrl = '';
+      const labelEl = document.getElementById('newItemFileLabel');
+      if (labelEl) labelEl.textContent = 'Or upload food image from device (PNG, JPG, WEBP)';
+      renderEditorList();
+      refreshAllProductViews();
+      showToast(`Added "${name}" to menu!`);
+    }
+
+    /* ==================== SCROLL REVEAL & BOOT ==================== */
+    function initScrollReveal() {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      }, { threshold: 0.08 });
+
+      document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+
+      const sectionIds = ['home', 'story', 'celebrate', 'contact'];
+      const navObserver = new IntersectionObserver((entries) => {
+        if (document.getElementById('view-home').classList.contains('hidden')) return;
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setActiveNavSection(entry.target.id);
+          }
+        });
+      }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) navObserver.observe(el);
+      });
+
+      window.addEventListener('scroll', () => {
+        const heroContent = document.getElementById('heroContentParallax');
+        if (heroContent && window.scrollY < 700) {
+          heroContent.style.transform = `translateY(${window.scrollY * 0.16}px)`;
+          heroContent.style.opacity = `${Math.max(0.25, 1 - window.scrollY / 650)}`;
+        }
+      }, { passive: true });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      updateCartBadge();
+      renderTrendingGrid();
+      renderSpecialOffers();
+      initOfferScrollHint();
+      renderTestimonial();
+      initScrollReveal();
+      startOfferTimer();
+      setTimeout(() => setActiveNavSection('home'), 80);
+      window.addEventListener('resize', resetNavIndicator);
+
+      setInterval(() => {
+        testimonialIdx = (testimonialIdx + 1) % TESTIMONIALS.length;
+        renderTestimonial();
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
